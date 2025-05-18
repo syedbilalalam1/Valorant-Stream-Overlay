@@ -142,7 +142,3 @@ Customize overlays by editing the HTML, CSS, and JavaScript files in the `overla
 ## License
 
 This project is proprietary software. All rights reserved.
-
-## Credits
-
-HelValorant

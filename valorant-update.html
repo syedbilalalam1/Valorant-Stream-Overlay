@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Valorant Overlay by Bilal - Control Panel</title>
+  <style>
+    body { font-family: Arial; margin: 20px; max-width: 1200px; margin: 0 auto; background-color: #f5f5f5; }
+    .section { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    h2 { margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; color: #ff4655; }
+    .form-group { margin-bottom: 10px; }
+    label { display: inline-block; width: 120px; }
+    button { padding: 8px 15px; margin-right: 10px; margin-top: 10px; background: #ff4655; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #ff293b; }
+    #result { margin-top: 20px; padding: 10px; background: #f5f5f5; border-radius: 4px; }
+    .token-list { margin: 10px 0; max-height: 100px; overflow-y: auto; font-family: monospace; background: #f9f9f9; padding: 5px; border-radius: 3px; }
+    .token-list div { margin: 5px 0; }
+    .player-row { display: flex; margin-bottom: 10px; align-items: center; }
+    .player-row input, .player-row select { margin-right: 10px; padding: 5px; border: 1px solid #ddd; border-radius: 3px; }
+    .team-section { display: flex; justify-content: space-between; }
+    .team-column { width: 48%; }
+    .control-section { display: flex; flex-wrap: wrap; gap: 10px; }
+    .control-section button { margin-top: 5px; }
+    .round-controls { margin-top: 20px; }
+    .color-box { width: 20px; height: 20px; display: inline-block; margin-right: 5px; border-radius: 3px; vertical-align: middle; }
+    .team1-color { background-color: #19e619; }
+    .team2-color { background-color: #ff293b; }
+    .info-box { background-color: #e6f7ff; border-left: 4px solid #1890ff; padding: 10px; margin-bottom: 15px; }
+    input, select { padding: 6px; }
+    .button-group { display: flex; gap: 10px; margin-top: 15px; }
+    .button-group button.green { background-color: #19e619; }
+    .button-group button.red { background-color: #ff293b; }
+    .header-logo { text-align: center; padding: 10px 0; background: linear-gradient(135deg, #0f1923 0%, #ff4655 100%); margin-bottom: 20px; border-radius: 8px; color: white; }
+    .header-logo h1 { margin: 0; font-size: 28px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+    .header-logo p { margin: 5px 0 0; font-style: italic; }
+    footer { text-align: center; margin-top: 30px; padding: 20px; color: #666; background-color: #0f1923; color: white; border-radius: 8px; }
+    .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; margin-bottom: 20px; }
+    .footer-section { flex: 1; min-width: 200px; margin: 0 15px; text-align: left; }
+    .footer-section h4 { color: #ff4655; margin-bottom: 15px; }
+    .footer-section ul { list-style: none; padding: 0; }
+    .footer-section ul li { margin-bottom: 5px; }
+    .footer-section a { color: #fff; text-decoration: none; }
+    .footer-section a:hover { text-decoration: underline; color: #ff4655; }
+    .copyright { padding-top: 15px; border-top: 1px solid #333; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="header-logo">
+    <h1>Valorant Overlay by Bilal</h1>
+    <p>Professional Tournament Overlay System</p>
+  </div>
+  
+  <div class="info-box">
+    This panel allows you to manually control all aspects of the overlay without needing Overwolf.
+  </div>
+  
+  <div class="section">
+    <h2>Team Configuration</h2>
+    <div class="team-section">
+      <div class="team-column">
+        <h3><span class="color-box team1-color"></span>Team 1</h3>
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" id="team1-name" value="Jeffs Den">
+        </div>
+        <div class="form-group">
+          <label>Abbreviation:</label>
+          <input type="text" id="team1-abbr" value="JFD">
+        </div>
+        <div class="form-group">
+          <label>Info:</label>
+          <input type="text" id="team1-info" value="#1 Seed">
+        </div>
+        <div class="form-group">
+          <label>Icon URL:</label>
+          <input type="text" id="team1-icon" value="https://cdn.sanity.io/images/5gii1snx/production/c32c2cb848fd3338ff23a590ec5c0e052b080f27-1000x1000.png" style="width: 350px;">
+        </div>
+        <div class="form-group">
+          <label>Score:</label>
+          <input type="number" id="team1-score" value="13" min="0" max="13" style="width: 60px;">
+        </div>
+      </div>
+      
+      <div class="team-column">
+        <h3><span class="color-box team2-color"></span>Team 2</h3>
+        <div class="form-group">
+          <label>Name:</label>
+          <input type="text" id="team2-name" value="S-Rank Hunters">
+        </div>
+        <div class="form-group">
+          <label>Abbreviation:</label>
+          <input type="text" id="team2-abbr" value="SRH">
+        </div>
+        <div class="form-group">
+          <label>Info:</label>
+          <input type="text" id="team2-info" value="#2 Seed">
+        </div>
+        <div class="form-group">
+          <label>Icon URL:</label>
+          <input type="text" id="team2-icon" value="https://pbs.twimg.com/profile_images/1553766469955043328/td9gZwlS_400x400.jpg" style="width: 350px;">
+        </div>
+        <div class="form-group">
+          <label>Score:</label>
+          <input type="number" id="team2-score" value="5" min="0" max="13" style="width: 60px;">
+        </div>
+      </div>
+    </div>
+    <button onclick="updateTeams()">Update Teams & Scores</button>
+  </div>
+
+  <div class="section">
+    <h2>Round & Game Controls</h2>
+    <div class="form-group">
+      <label>Round Number:</label>
+      <input type="number" id="round-number" value="18" min="1" max="24">
+      <button onclick="updateRoundNumber()">Update Round</button>
+    </div>
+    
+    <div class="form-group">
+      <label>Spike Status:</label>
+      <select id="spike-status">
+        <option value="up">Not Planted</option>
+        <option value="down">Planted</option>
+      </select>
+      <button onclick="updateSpikeStatus()">Update Spike</button>
+    </div>
+    
+    <div class="button-group">
+      <button class="green" onclick="triggerRoundWin('team_1')">Team 1 Wins Round</button>
+      <button class="red" onclick="triggerRoundWin('team_2')">Team 2 Wins Round</button>
+    </div>
+    
+    <h3>Game Flow Controls</h3>
+    <div class="form-group">
+      <label>Current Map:</label>
+      <select id="current-map">
+        <option value="bind">Bind</option>
+        <option value="haven">Haven</option>
+        <option value="split">Split</option>
+        <option value="ascent">Ascent</option>
+        <option value="icebox">Icebox</option>
+        <option value="breeze">Breeze</option>
+        <option value="fracture">Fracture</option>
+        <option value="pearl">Pearl</option>
+        <option value="lotus" selected>Lotus</option>
+        <option value="sunset">Sunset</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Map State:</label>
+      <select id="map-state">
+        <option value="upcomming">Upcoming</option>
+        <option value="current" selected>Current</option>
+        <option value="over">Over</option>
+        <option value="decider">Decider</option>
+      </select>
+    </div>
+    <button onclick="updateMapFlow()">Update Map Status</button>
+  </div>
+  
+  <div class="section">
+    <h2>Timer Controls</h2>
+    <div class="form-group">
+      <label>Timer Duration (seconds):</label>
+      <input type="number" id="timer-duration" value="45" min="1">
+    </div>
+    <div class="form-group">
+      <label>Description:</label>
+      <input type="text" id="timer-description" value="Technical Timeout" style="width: 200px;">
+    </div>
+    <button onclick="startTimer()">Start Timer</button>
+  </div>
+
+  <!-- New Announcements section -->
+  <div class="section">
+    <h2>Announcements</h2>
+    <div class="form-group">
+      <label>Message:</label>
+      <input type="text" id="announcement-text" placeholder="Enter announcement message" style="width: 70%;">
+    </div>
+    <div class="form-group">
+      <label>Duration (seconds):</label>
+      <input type="number" id="announcement-duration" value="10" min="3" max="30">
+    </div>
+    <div class="form-group">
+      <label>Type:</label>
+      <select id="announcement-type">
+        <option value="info">Info</option>
+        <option value="warning">Warning</option>
+        <option value="success">Success</option>
+      </select>
+    </div>
+    <button onclick="sendAnnouncement()">Send Announcement</button>
+    
+    <div style="margin-top: 15px;">
+      <h4>Quick Announcements</h4>
+      <div class="button-group">
+        <button onclick="sendQuickAnnouncement('Match starting in 1 minute', 'info')">Match Starting</button>
+        <button onclick="sendQuickAnnouncement('Technical pause', 'warning')">Technical Pause</button>
+        <button onclick="sendQuickAnnouncement('Match resumed', 'success')">Match Resumed</button>
+        <button onclick="sendQuickAnnouncement('Map pick phase beginning', 'info')">Map Pick Phase</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Player Setup</h2>
+    <div class="token-list" id="token-list">Loading tokens...</div>
+    <h3>Team 1 Players</h3>
+    <div id="team1-players">
+      <!-- Player rows will be added here -->
+    </div>
+    <h3>Team 2 Players</h3>
+    <div id="team2-players">
+      <!-- Player rows will be added here -->
+    </div>
+    <div class="button-group">
+      <button onclick="registerAllPlayers()">1. Register All Players</button>
+      <button onclick="updateAllPlayerData()">2. Update All Player Data</button>
+      <button onclick="simulateChanges()">3. Start/Stop Simulation</button>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>Overlay Links</h2>
+    <p>Open these links in OBS as Browser Sources (1920x1080):</p>
+    <ul>
+      <li><a href="http://localhost:25565/player_stats/" target="_blank">Player Stats</a></li>
+      <li><a href="http://localhost:25565/game_score/" target="_blank">Game Score</a></li>
+      <li><a href="http://localhost:25565/map_picks/" target="_blank">Map Picks</a></li>
+      <li><a href="http://localhost:25565/timer/" target="_blank">Timer</a></li>
+    </ul>
+  </div>
+  
+  <!-- New Presets Section -->
+  <div class="section">
+    <h2>Preset Configurations</h2>
+    <div class="form-group">
+      <label>Saved Presets:</label>
+      <select id="preset-select" style="width: 300px;">
+        <option value="" disabled selected>Select a preset</option>
+        <option value="tournament-finals">Tournament Finals</option>
+        <option value="qualifier-match">Qualifier Match</option>
+        <option value="scrim-setup">Scrim Setup</option>
+      </select>
+      <button onclick="loadPreset()">Load</button>
+    </div>
+    
+    <div class="form-group">
+      <label>Preset Name:</label>
+      <input type="text" id="preset-name" placeholder="Enter configuration name" style="width: 300px;">
+      <button onclick="saveCurrentConfig()">Save Current Configuration</button>
+    </div>
+    
+    <div class="button-group">
+      <button onclick="exportConfig()">Export Configuration</button>
+      <button onclick="importConfig()">Import Configuration</button>
+    </div>
+    
+    <div id="preset-message" style="margin-top: 10px;"></div>
+  </div>
+  
+  <div id="result" style="margin-bottom: 30px;">Results will appear here...</div>
+  
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Valorant Overlay by Bilal</h4>
+        <p>Professional tournament overlay system for VALORANT esports</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>Email: contact@syedbilalalam.com</p>
+        <p>Twitter: @SyedBilalAlam</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#" onclick="refreshAllData(); return false;">Refresh Data</a></li>
+          <li><a href="#" onclick="resetAllTokens(); return false;">Reset Tokens</a></li>
+          <li><a href="#" onclick="window.open('http://localhost:25565/admin', '_blank')">Admin Panel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2023 Syed Bilal Alam. All rights reserved. VALORANT™ is a registered trademark of Riot Games, Inc.
+    </div>
+  </footer>
+  
+  <script>
+    // Sample player names
+    const team1Names = ["JeffoTron", "FlashPoint", "ShadowBlade", "NeonNinja", "CrystalClear"];
+    const team2Names = ["S-Rank", "VoidRunner", "PixelPerfect", "MidnightHunter", "StormChaser"];
+    
+    // Sample agents
+    const agents = ["jett", "phoenix", "sage", "sova", "cypher", "killjoy", "reyna", "breach", "skye", "astra", "viper", "omen", "raze", "chamber"];
+    
+    // Sample weapons
+    const weapons = ["vandal", "phantom", "operator", "sheriff", "ghost", "spectre", "odin", "guardian", "bulldog", "classic", "judge", "marshal"];
+    
+    let tokens = [];
+    let simulationInterval;
+    let gameState = null;
+    
+    // Load saved presets from localStorage when page loads
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        // Load game state and tokens (replacing the original handler)
+        await loadGameState();
+        await loadTokens();
+        
+        // Load saved configurations
+        const savedConfigs = JSON.parse(localStorage.getItem('valorantOverlayConfigs') || '{}');
+        const presetSelect = document.getElementById('preset-select');
+        
+        for (const configName in savedConfigs) {
+          const option = document.createElement('option');
+          option.value = configName;
+          option.textContent = configName;
+          presetSelect.appendChild(option);
+        }
+      } catch (error) {
+        console.error('Error initializing:', error);
+        setResult('Error loading data. Please try refreshing the page.', true);
+      }
+    });
+    
+    async function loadGameState() {
+      try {
+        const response = await fetch('http://localhost:25565/print_state');
+        gameState = await response.json();
+        
+        // Update UI with current values
+        document.getElementById('round-number').value = gameState.gameState.round_number || 0;
+        document.getElementById('team1-score').value = gameState.gameState.team_1_score || 0;
+        document.getElementById('team2-score').value = gameState.gameState.team_2_score || 0;
+        document.getElementById('spike-status').value = gameState.gameState.spike_down ? 'down' : 'up';
+        
+        // Find current map
+        let currentMap = null;
+        for (const mapKey in gameState.gameState.game_flow) {
+          if (gameState.gameState.game_flow[mapKey].state === 'current') {
+            currentMap = gameState.gameState.game_flow[mapKey].map;
+            break;
+          }
+        }
+        
+        if (currentMap) {
+          const mapSelect = document.getElementById('current-map');
+          for (let i = 0; i < mapSelect.options.length; i++) {
+            if (mapSelect.options[i].value === currentMap) {
+              mapSelect.selectedIndex = i;
+              break;
+            }
+          }
+        }
+        
+        // Update team info
+        document.getElementById('team1-abbr').value = gameState.gameState.team_1.abbreviation || '';
+        document.getElementById('team1-icon').value = gameState.gameState.team_1.icon_link || '';
+        document.getElementById('team1-info').value = gameState.gameState.team_1.team_info || '';
+        
+        document.getElementById('team2-abbr').value = gameState.gameState.team_2.abbreviation || '';
+        document.getElementById('team2-icon').value = gameState.gameState.team_2.icon_link || '';
+        document.getElementById('team2-info').value = gameState.gameState.team_2.team_info || '';
+        
+        // Update timer
+        if (gameState.timer) {
+          document.getElementById('timer-duration').value = Math.floor(gameState.timer.time / 1000) || 45;
+          document.getElementById('timer-description').value = gameState.timer.description || 'Technical Timeout';
+        }
+        
+      } catch (error) {
+        setResult(`Error loading game state: ${error.message}`, true);
+      }
+    }
+    
+    async function loadTokens() {
+      try {
+        if (!gameState) {
+          await loadGameState();
+        }
+        
+        tokens = [];
+        let tokenHtml = "";
+        
+        for (let i = 0; i < 10; i++) {
+          const playerKey = `player_${i}`;
+          if (gameState.players[playerKey]) {
+            const token = gameState.players[playerKey].token;
+            tokens.push({
+              playerKey: playerKey,
+              token: token,
+              team: i < 5 ? 1 : 2,
+              position: i % 5
+            });
+            
+            tokenHtml += `<div>${playerKey}: ${token}</div>`;
+          }
+        }
+        
+        document.getElementById('token-list').innerHTML = tokenHtml;
+        
+        // Create player rows
+        createPlayerRows();
+        
+      } catch (error) {
+        setResult(`Error loading tokens: ${error.message}`, true);
+      }
+    }
+    
+    function createPlayerRows() {
+      const team1Container = document.getElementById('team1-players');
+      const team2Container = document.getElementById('team2-players');
+      
+      team1Container.innerHTML = '';
+      team2Container.innerHTML = '';
+      
+      for (let i = 0; i < 5; i++) {
+        const team1Row = createPlayerRow(0, i);
+        const team2Row = createPlayerRow(1, i);
+        
+        team1Container.appendChild(team1Row);
+        team2Container.appendChild(team2Row);
+      }
+    }
+    
+    function createPlayerRow(teamIndex, playerIndex) {
+      const row = document.createElement('div');
+      row.className = 'player-row';
+      
+      const tokenData = tokens[teamIndex * 5 + playerIndex];
+      const defaultName = teamIndex === 0 ? team1Names[playerIndex] : team2Names[playerIndex];
+      
+      // Create name input
+      const nameInput = document.createElement('input');
+      nameInput.type = 'text';
+      nameInput.placeholder = 'Player name';
+      nameInput.value = defaultName;
+      nameInput.id = `player-${teamIndex}-${playerIndex}-name`;
+      nameInput.style.width = '120px';
+      row.appendChild(nameInput);
+      
+      // Create agent select
+      const agentSelect = document.createElement('select');
+      agentSelect.id = `player-${teamIndex}-${playerIndex}-agent`;
+      agents.forEach(agent => {
+        const option = document.createElement('option');
+        option.value = agent;
+        option.textContent = agent.charAt(0).toUpperCase() + agent.slice(1);
+        agentSelect.appendChild(option);
+      });
+      
+      // Randomly select an agent
+      agentSelect.selectedIndex = Math.floor(Math.random() * agents.length);
+      row.appendChild(agentSelect);
+      
+      // Create weapon select
+      const weaponSelect = document.createElement('select');
+      weaponSelect.id = `player-${teamIndex}-${playerIndex}-weapon`;
+      weapons.forEach(weapon => {
+        const option = document.createElement('option');
+        option.value = weapon;
+        option.textContent = weapon.charAt(0).toUpperCase() + weapon.slice(1);
+        weaponSelect.appendChild(option);
+      });
+      // Randomly select a weapon
+      weaponSelect.selectedIndex = Math.floor(Math.random() * weapons.length);
+      row.appendChild(weaponSelect);
+      
+      // Create health input
+      const healthInput = document.createElement('input');
+      healthInput.type = 'number';
+      healthInput.placeholder = 'Health';
+      healthInput.value = Math.floor(Math.random() * 100);
+      healthInput.min = 0;
+      healthInput.max = 100;
+      healthInput.id = `player-${teamIndex}-${playerIndex}-health`;
+      healthInput.style.width = '60px';
+      row.appendChild(healthInput);
+      
+      // Create shield input
+      const shieldInput = document.createElement('input');
+      shieldInput.type = 'number';
+      shieldInput.placeholder = 'Shield';
+      shieldInput.value = Math.floor(Math.random() * 50);
+      shieldInput.min = 0;
+      shieldInput.max = 50;
+      shieldInput.id = `player-${teamIndex}-${playerIndex}-shield`;
+      shieldInput.style.width = '60px';
+      row.appendChild(shieldInput);
+      
+      // Is dead checkbox
+      const deadLabel = document.createElement('label');
+      deadLabel.style.width = 'auto';
+      deadLabel.textContent = 'Dead:';
+      deadLabel.style.marginLeft = '10px';
+      row.appendChild(deadLabel);
+      
+      const deadCheckbox = document.createElement('input');
+      deadCheckbox.type = 'checkbox';
+      deadCheckbox.id = `player-${teamIndex}-${playerIndex}-dead`;
+      deadCheckbox.checked = false;
+      row.appendChild(deadCheckbox);
+      
+      return row;
+    }
+    
+    async function updateTeams() {
+      try {
+        // Prepare team data
+        const team1 = {
+          abbreviation: document.getElementById('team1-abbr').value,
+          icon_link: document.getElementById('team1-icon').value,
+          team_info: document.getElementById('team1-info').value,
+          team_name: document.getElementById('team1-name').value
+        };
+        
+        const team2 = {
+          abbreviation: document.getElementById('team2-abbr').value,
+          icon_link: document.getElementById('team2-icon').value,
+          team_info: document.getElementById('team2-info').value,
+          team_name: document.getElementById('team2-name').value
+        };
+        
+        // Get scores
+        const team1Score = parseInt(document.getElementById('team1-score').value);
+        const team2Score = parseInt(document.getElementById('team2-score').value);
+        
+        // Use the new endpoint to update team info
+        const formData = new FormData();
+        formData.append('team_1', JSON.stringify(team1));
+        formData.append('team_2', JSON.stringify(team2));
+        formData.append('team_1_score', team1Score);
+        formData.append('team_2_score', team2Score);
+        
+        const response = await fetch('http://localhost:25565/update_team_info', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.status) {
+          // Refresh gameState object with latest data
+          await loadGameState();
+          setResult('Teams and scores updated successfully');
+        } else {
+          setResult(`Error updating teams: ${result.message || 'Unknown error'}`, true);
+        }
+      } catch (error) {
+        setResult(`Error updating teams: ${error.message}`, true);
+      }
+    }
+    
+    async function updateRoundNumber() {
+      try {
+        const roundNumber = parseInt(document.getElementById('round-number').value);
+        if (isNaN(roundNumber) || roundNumber < 1 || roundNumber > 24) {
+          setResult('Round number must be between 1 and 24', true);
+          return;
+        }
+        
+        gameState.gameState.round_number = roundNumber;
+        
+        const formData = new FormData();
+        formData.append('stage', gameState.gameState.game_flow.map_2.state);
+        formData.append('spike', gameState.gameState.spike_down ? 'down' : 'up');
+        
+        await fetch('http://localhost:25565/change_game_state', {
+          method: 'POST',
+          body: formData
+        });
+        
+        setResult(`Round number updated to ${roundNumber}`);
+      } catch (error) {
+        setResult(`Error updating round number: ${error.message}`, true);
+      }
+    }
+    
+    async function updateSpikeStatus() {
+      try {
+        const spikeStatus = document.getElementById('spike-status').value;
+        
+        const formData = new FormData();
+        formData.append('stage', gameState.gameState.game_flow.map_2.state);
+        formData.append('spike', spikeStatus);
+        
+        await fetch('http://localhost:25565/change_game_state', {
+          method: 'POST',
+          body: formData
+        });
+        
+        setResult(`Spike status updated to ${spikeStatus === 'down' ? 'planted' : 'not planted'}`);
+      } catch (error) {
+        setResult(`Error updating spike status: ${error.message}`, true);
+      }
+    }
+    
+    async function triggerRoundWin(team) {
+      try {
+        // Update the appropriate team's score
+        if (team === 'team_1') {
+          gameState.gameState.team_1_score += 1;
+          document.getElementById('team1-score').value = gameState.gameState.team_1_score;
+        } else {
+          gameState.gameState.team_2_score += 1;
+          document.getElementById('team2-score').value = gameState.gameState.team_2_score;
+        }
+        
+        // Trigger round end
+        const formData = new FormData();
+        formData.append('winningTeam', team);
+        
+        await fetch('http://localhost:25565/end_round', {
+          method: 'POST',
+          body: formData
+        });
+        
+        // Increment round number
+        const currentRound = parseInt(document.getElementById('round-number').value);
+        document.getElementById('round-number').value = currentRound + 1;
+        
+        setResult(`Round won by ${team === 'team_1' ? 'Team 1' : 'Team 2'}`);
+      } catch (error) {
+        setResult(`Error triggering round win: ${error.message}`, true);
+      }
+    }
+    
+    async function endRound() {
+      try {
+        const formData = new FormData();
+        formData.append('winningTeam', 'team_1'); // Doesn't affect scores if we don't increment
+        
+        await fetch('http://localhost:25565/end_round', {
+          method: 'POST',
+          body: formData
+        });
+      } catch (error) {
+        console.error('Error ending round:', error);
+      }
+    }
+    
+    async function updateMapFlow() {
+      try {
+        const mapName = document.getElementById('current-map').value;
+        const mapState = document.getElementById('map-state').value;
+        
+        // Find the map_2 object (current map) and update it
+        if (gameState.gameState.game_flow.map_2) {
+          gameState.gameState.game_flow.map_2.map = mapName;
+          gameState.gameState.game_flow.map_2.state = mapState;
+          
+          // Force a recalculation of the map flow
+          await fetch('http://localhost:25565/recalculate_maps', {
+            method: 'GET'
+          });
+          
+          setResult(`Current map updated to ${mapName} with state ${mapState}`);
+        } else {
+          setResult('Could not find current map in game flow', true);
+        }
+      } catch (error) {
+        setResult(`Error updating map flow: ${error.message}`, true);
+      }
+    }
+    
+    async function startTimer() {
+      try {
+        const duration = parseInt(document.getElementById('timer-duration').value);
+        const description = document.getElementById('timer-description').value;
+        
+        if (isNaN(duration) || duration <= 0) {
+          setResult('Timer duration must be a positive number', true);
+          return;
+        }
+        
+        const formData = new FormData();
+        formData.append('timeMiliseconds', duration * 1000);
+        formData.append('description', description);
+        
+        const response = await fetch('http://localhost:25565/set_timer', {
+          method: 'POST',
+          body: formData
+        });
+        
+        setResult(`Timer started for ${duration} seconds with description "${description}"`);
+      } catch (error) {
+        setResult(`Error starting timer: ${error.message}`, true);
+      }
+    }
+    
+    async function registerAllPlayers() {
+      for (const tokenData of tokens) {
+        try {
+          const formData = new FormData();
+          formData.append('playerToken', tokenData.token);
+          
+          const response = await fetch('http://localhost:25565/register_external_user', {
+            method: 'POST',
+            body: formData
+          });
+          
+          const data = await response.json();
+          setResult(`Registered player ${tokenData.playerKey}: ${data.status}`);
+        } catch (error) {
+          setResult(`Error registering player ${tokenData.playerKey}: ${error.message}`, true);
+        }
+      }
+      
+      setResult('All players registered successfully');
+    }
+    
+    async function updateAllPlayerData() {
+      for (let i = 0; i < tokens.length; i++) {
+        const tokenData = tokens[i];
+        const teamIndex = Math.floor(i / 5);
+        const playerIndex = i % 5;
+        
+        const playerName = document.getElementById(`player-${teamIndex}-${playerIndex}-name`).value;
+        const agent = document.getElementById(`player-${teamIndex}-${playerIndex}-agent`).value;
+        const weapon = document.getElementById(`player-${teamIndex}-${playerIndex}-weapon`).value;
+        const health = parseInt(document.getElementById(`player-${teamIndex}-${playerIndex}-health`).value);
+        const shield = parseInt(document.getElementById(`player-${teamIndex}-${playerIndex}-shield`).value);
+        const isDead = document.getElementById(`player-${teamIndex}-${playerIndex}-dead`).checked;
+        
+        const playerData = {
+          token: tokenData.token,
+          username: playerName,
+          agent: agent,
+          health: isDead ? 0 : health,
+          shield: isDead ? 0 : shield,
+          ult_points_needed: 7,
+          ult_points_gained: Math.floor(Math.random() * 7),
+          weapon: weapon,
+          c_util: !isDead && Math.random() > 0.3,
+          q_util: !isDead && Math.random() > 0.3,
+          e_util: !isDead && Math.random() > 0.3,
+          x_util: !isDead && Math.random() > 0.7,
+          credits: 800 + Math.floor(Math.random() * 3000),
+          has_spike: !isDead && i === 2, // Give spike to the middle player on team 1
+          is_dead: isDead
+        };
+        
+        try {
+          const formData = new FormData();
+          formData.append('playerData', JSON.stringify(playerData));
+          
+          await fetch('http://localhost:25565/update_player_state', {
+            method: 'POST',
+            body: formData
+          });
+          
+        } catch (error) {
+          setResult(`Error updating player ${tokenData.playerKey}: ${error.message}`, true);
+          return;
+        }
+      }
+      
+      setResult('All player data updated successfully');
+    }
+    
+    function simulateChanges() {
+      if (simulationInterval) {
+        clearInterval(simulationInterval);
+        simulationInterval = null;
+        setResult('Simulation stopped');
+        return;
+      }
+      
+      setResult('Starting simulation - updates every 3 seconds');
+      
+      simulationInterval = setInterval(() => {
+        // Randomize health and shield values
+        for (let i = 0; i < 10; i++) {
+          const teamIndex = Math.floor(i / 5);
+          const playerIndex = i % 5;
+          
+          const healthInput = document.getElementById(`player-${teamIndex}-${playerIndex}-health`);
+          const shieldInput = document.getElementById(`player-${teamIndex}-${playerIndex}-shield`);
+          const deadCheckbox = document.getElementById(`player-${teamIndex}-${playerIndex}-dead`);
+          
+          // 10% chance to toggle dead state
+          if (Math.random() < 0.1) {
+            deadCheckbox.checked = !deadCheckbox.checked;
+          }
+          
+          if (!deadCheckbox.checked) {
+            healthInput.value = Math.floor(Math.random() * 100);
+            shieldInput.value = Math.floor(Math.random() * 50);
+          } else {
+            healthInput.value = 0;
+            shieldInput.value = 0;
+          }
+        }
+        
+        updateAllPlayerData();
+      }, 3000);
+    }
+    
+    function setResult(message, isError = false) {
+      const resultElement = document.getElementById('result');
+      resultElement.textContent = message;
+      resultElement.style.background = isError ? '#ffeeee' : '#f5f5f5';
+      resultElement.style.color = isError ? '#cc0000' : '#333333';
+    }
+    
+    // New utility functions for footer links
+    async function refreshAllData() {
+      try {
+        setResult('Refreshing all data...');
+        await loadGameState();
+        await loadTokens();
+        setResult('All data refreshed successfully');
+      } catch (error) {
+        setResult(`Error refreshing data: ${error.message}`, true);
+      }
+    }
+    
+    async function resetAllTokens() {
+      try {
+        const confirmReset = confirm('Are you sure you want to regenerate all player tokens? This will invalidate any existing connections.');
+        if (!confirmReset) return;
+        
+        setResult('Regenerating all tokens...');
+        const response = await fetch('http://localhost:25565/regenerate_user_tokens', {
+          method: 'GET'
+        });
+        
+        const data = await response.json();
+        if (data.status) {
+          await loadTokens();
+          setResult('All tokens regenerated successfully. Players will need to reconnect.');
+        } else {
+          setResult('Failed to regenerate tokens', true);
+        }
+      } catch (error) {
+        setResult(`Error regenerating tokens: ${error.message}`, true);
+      }
+    }
+    
+    // Announcement system functions
+    async function sendAnnouncement() {
+      try {
+        const message = document.getElementById('announcement-text').value;
+        const duration = parseInt(document.getElementById('announcement-duration').value);
+        const type = document.getElementById('announcement-type').value;
+        
+        if (!message) {
+          setResult('Please enter an announcement message', true);
+          return;
+        }
+        
+        if (isNaN(duration) || duration < 3 || duration > 30) {
+          setResult('Duration must be between 3 and 30 seconds', true);
+          return;
+        }
+        
+        const formData = new FormData();
+        formData.append('message', message);
+        formData.append('duration', duration * 1000); // Convert to milliseconds
+        formData.append('type', type);
+        
+        const response = await fetch('http://localhost:25565/broadcast_message', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const data = await response.json();
+        if (data.status) {
+          setResult(`Announcement sent: "${message}" (${duration}s)`);
+          document.getElementById('announcement-text').value = '';
+        } else {
+          setResult(`Failed to send announcement: ${data.message}`, true);
+        }
+      } catch (error) {
+        setResult(`Error sending announcement: ${error.message}`, true);
+      }
+    }
+    
+    async function sendQuickAnnouncement(message, type) {
+      document.getElementById('announcement-text').value = message;
+      document.getElementById('announcement-type').value = type;
+      await sendAnnouncement();
+    }
+    
+    // Configuration preset functions
+    function getCurrentConfig() {
+      const config = {
+        version: "1.0",
+        creator: "Valorant Overlay by Bilal",
+        timestamp: new Date().toISOString(),
+        teams: {
+          team1: {
+            name: document.getElementById('team1-name').value,
+            abbreviation: document.getElementById('team1-abbr').value,
+            info: document.getElementById('team1-info').value,
+            icon: document.getElementById('team1-icon').value,
+            score: parseInt(document.getElementById('team1-score').value)
+          },
+          team2: {
+            name: document.getElementById('team2-name').value,
+            abbreviation: document.getElementById('team2-abbr').value,
+            info: document.getElementById('team2-info').value,
+            icon: document.getElementById('team2-icon').value, 
+            score: parseInt(document.getElementById('team2-score').value)
+          }
+        },
+        game: {
+          round: parseInt(document.getElementById('round-number').value),
+          spikeStatus: document.getElementById('spike-status').value,
+          currentMap: document.getElementById('current-map').value,
+          mapState: document.getElementById('map-state').value
+        },
+        timer: {
+          duration: parseInt(document.getElementById('timer-duration').value),
+          description: document.getElementById('timer-description').value
+        }
+      };
+      
+      return config;
+    }
+    
+    function applyConfig(config) {
+      try {
+        // Teams
+        document.getElementById('team1-name').value = config.teams.team1.name;
+        document.getElementById('team1-abbr').value = config.teams.team1.abbreviation;
+        document.getElementById('team1-info').value = config.teams.team1.info;
+        document.getElementById('team1-icon').value = config.teams.team1.icon;
+        document.getElementById('team1-score').value = config.teams.team1.score;
+        
+        document.getElementById('team2-name').value = config.teams.team2.name;
+        document.getElementById('team2-abbr').value = config.teams.team2.abbreviation;
+        document.getElementById('team2-info').value = config.teams.team2.info;
+        document.getElementById('team2-icon').value = config.teams.team2.icon;
+        document.getElementById('team2-score').value = config.teams.team2.score;
+        
+        // Game
+        document.getElementById('round-number').value = config.game.round;
+        document.getElementById('spike-status').value = config.game.spikeStatus;
+        document.getElementById('current-map').value = config.game.currentMap;
+        document.getElementById('map-state').value = config.game.mapState;
+        
+        // Timer
+        document.getElementById('timer-duration').value = config.timer.duration;
+        document.getElementById('timer-description').value = config.timer.description;
+        
+        setPresetMessage(`Configuration "${config.name || 'Unnamed'}" loaded successfully`, false);
+      } catch (error) {
+        setPresetMessage(`Error applying configuration: ${error.message}`, true);
+      }
+    }
+    
+    function setPresetMessage(message, isError = false) {
+      const messageElement = document.getElementById('preset-message');
+      messageElement.textContent = message;
+      messageElement.style.color = isError ? '#cc0000' : '#19e619';
+    }
+    
+    function saveCurrentConfig() {
+      try {
+        const configName = document.getElementById('preset-name').value;
+        if (!configName) {
+          setPresetMessage('Please enter a configuration name', true);
+          return;
+        }
+        
+        const config = getCurrentConfig();
+        config.name = configName;
+        
+        // Save to local storage
+        let savedConfigs = JSON.parse(localStorage.getItem('valorantOverlayConfigs') || '{}');
+        savedConfigs[configName] = config;
+        localStorage.setItem('valorantOverlayConfigs', JSON.stringify(savedConfigs));
+        
+        // Add to the dropdown
+        const option = document.createElement('option');
+        option.value = configName;
+        option.textContent = configName;
+        document.getElementById('preset-select').appendChild(option);
+        
+        setPresetMessage(`Configuration "${configName}" saved successfully`, false);
+      } catch (error) {
+        setPresetMessage(`Error saving configuration: ${error.message}`, true);
+      }
+    }
+    
+    function loadPreset() {
+      try {
+        const presetName = document.getElementById('preset-select').value;
+        if (!presetName) {
+          setPresetMessage('Please select a preset to load', true);
+          return;
+        }
+        
+        // First check presets in localStorage
+        let savedConfigs = JSON.parse(localStorage.getItem('valorantOverlayConfigs') || '{}');
+        
+        if (savedConfigs[presetName]) {
+          applyConfig(savedConfigs[presetName]);
+          return;
+        }
+        
+        // Then check built-in presets
+        const builtInPresets = {
+          'tournament-finals': {
+            name: "Tournament Finals",
+            teams: {
+              team1: {
+                name: "Team Alpha",
+                abbreviation: "ALP",
+                info: "Tournament Finalist",
+                icon: "https://cdn.sanity.io/images/5gii1snx/production/c32c2cb848fd3338ff23a590ec5c0e052b080f27-1000x1000.png",
+                score: 12
+              },
+              team2: {
+                name: "Team Omega",
+                abbreviation: "OMG", 
+                info: "Tournament Finalist",
+                icon: "https://pbs.twimg.com/profile_images/1553766469955043328/td9gZwlS_400x400.jpg",
+                score: 11
+              }
+            },
+            game: {
+              round: 24,
+              spikeStatus: "up",
+              currentMap: "haven",
+              mapState: "current"
+            },
+            timer: {
+              duration: 45,
+              description: "Technical Timeout"
+            }
+          },
+          'qualifier-match': {
+            name: "Qualifier Match",
+            teams: {
+              team1: {
+                name: "Challengers",
+                abbreviation: "CHL",
+                info: "Qualifier Round",
+                icon: "https://cdn.sanity.io/images/5gii1snx/production/c32c2cb848fd3338ff23a590ec5c0e052b080f27-1000x1000.png",
+                score: 0
+              },
+              team2: {
+                name: "Veterans",
+                abbreviation: "VET",
+                info: "Qualifier Round",
+                icon: "https://pbs.twimg.com/profile_images/1553766469955043328/td9gZwlS_400x400.jpg", 
+                score: 0
+              }
+            },
+            game: {
+              round: 1,
+              spikeStatus: "up",
+              currentMap: "bind",
+              mapState: "current"
+            },
+            timer: {
+              duration: 60,
+              description: "Match Starting Soon"
+            }
+          },
+          'scrim-setup': {
+            name: "Scrim Setup",
+            teams: {
+              team1: {
+                name: "Team A",
+                abbreviation: "TMA",
+                info: "Scrim",
+                icon: "https://cdn.sanity.io/images/5gii1snx/production/c32c2cb848fd3338ff23a590ec5c0e052b080f27-1000x1000.png",
+                score: 0
+              },
+              team2: {
+                name: "Team B",
+                abbreviation: "TMB",
+                info: "Scrim",
+                icon: "https://pbs.twimg.com/profile_images/1553766469955043328/td9gZwlS_400x400.jpg",
+                score: 0
+              }
+            },
+            game: {
+              round: 1,
+              spikeStatus: "up",
+              currentMap: "ascent",
+              mapState: "current"
+            },
+            timer: {
+              duration: 30,
+              description: "Warmup"
+            }
+          }
+        };
+        
+        if (builtInPresets[presetName]) {
+          applyConfig(builtInPresets[presetName]);
+        } else {
+          setPresetMessage(`Preset "${presetName}" not found`, true);
+        }
+      } catch (error) {
+        setPresetMessage(`Error loading preset: ${error.message}`, true);
+      }
+    }
+    
+    function exportConfig() {
+      try {
+        const config = getCurrentConfig();
+        const configName = document.getElementById('preset-name').value || "valorant_overlay_config";
+        config.name = configName;
+        
+        // Create a download link
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(config, null, 2));
+        const downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", configName + ".json");
+        document.body.appendChild(downloadAnchorNode);
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+        
+        setPresetMessage(`Configuration exported as "${configName}.json"`, false);
+      } catch (error) {
+        setPresetMessage(`Error exporting configuration: ${error.message}`, true);
+      }
+    }
+    
+    function importConfig() {
+      try {
+        // Create a file input
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.json';
+        
+        fileInput.onchange = function(event) {
+          const file = event.target.files[0];
+          if (!file) return;
+          
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            try {
+              const config = JSON.parse(e.target.result);
+              
+              // Add to saved configs
+              if (config.name) {
+                let savedConfigs = JSON.parse(localStorage.getItem('valorantOverlayConfigs') || '{}');
+                savedConfigs[config.name] = config;
+                localStorage.setItem('valorantOverlayConfigs', JSON.stringify(savedConfigs));
+                
+                // Add to dropdown if not already there
+                let found = false;
+                for (let i = 0; i < document.getElementById('preset-select').options.length; i++) {
+                  if (document.getElementById('preset-select').options[i].value === config.name) {
+                    found = true;
+                    break;
+                  }
+                }
+                
+                if (!found) {
+                  const option = document.createElement('option');
+                  option.value = config.name;
+                  option.textContent = config.name;
+                  document.getElementById('preset-select').appendChild(option);
+                }
+                
+                document.getElementById('preset-select').value = config.name;
+              }
+              
+              applyConfig(config);
+              setPresetMessage(`Configuration "${config.name || 'Unnamed'}" imported successfully`, false);
+            } catch (error) {
+              setPresetMessage(`Error parsing configuration file: ${error.message}`, true);
+            }
+          };
+          
+          reader.readAsText(file);
+        };
+        
+        fileInput.click();
+      } catch (error) {
+        setPresetMessage(`Error importing configuration: ${error.message}`, true);
+      }
+    }
+  </script>
+</body>
+</html>

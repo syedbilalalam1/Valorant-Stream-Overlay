@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelValorant Admin</title>
+    <script src="../resources/js/auth.js" defer></script>
+    <link rel="stylesheet" href="../resources/css/admin.css">
+    <link rel="stylesheet" href="../resources/css/alerts.css">
+    <script src="https://kit.fontawesome.com/1061ea1575.js" crossorigin="anonymous"></script>
+    <script src="../resources/js/pre_stream.js" defer></script>
+    <script src="../resources/js/alerts.js" defer></script>
+</head>
+<body>
+    <div class="admin-header">
+        <img src="../visual_assets/HelValorantOverlay_Icon.png">
+        <h3>Stream Management Panel</h3>
+        <button id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </div>
+    <div class="tabs">
+        <a class="tab selected" href="?page=prestream">Pre-Stream</a>
+        <a class="tab" href="?page=stream">Stream</a>
+        <a class="tab" href="?page=settings">Settings</a>
+    </div>
+
+    <div class="panel">
+        <div class="team-preview">
+            <h4>Series Preview</h4>
+            <div class="teams">
+
+            </div>
+            <div class="map-flow">
+                <div class="map-being-played">
+                    <select class="map-flow-state-selector">
+                        <option value="upcomming">Upcomming</option>
+                        <option value="current">Current</option>
+                        <option value="over">Over</option>
+                    </select>
+                    <input type="number" placeholder="Team 1 Points">
+                    <input type="number" placeholder="Team 2 Points">
+                </div>
+            </div>
+        </div>
+        <div class="team-editor">
+            <h4>Team Settings</h4>
+        </div>
+        <div class="map-pick-holder" id="map-pick-holder">
+            
+        </div>
+    </div>
+
+</body>
+</html>

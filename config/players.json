@@ -1,0 +1,212 @@
+{
+    "player_0": {
+       "token": "asd",
+       "is_registered": false,
+       "last_updated": null,
+       "data": {
+         "username": "Ailyrr",
+         "agent": "Jett",
+         "health": 76,
+         "shield": 2,
+         "ult_points_needed": 7,
+         "ult_points_gained": 7,
+         "weapon": "operator",
+         "c_util": true,
+         "q_util": false,
+         "e_util": true,
+         "x_util": false,
+         "credits": 3600,
+         "has_spike": false,
+         "is_dead": false
+       }
+    },
+    "player_1": {
+        "token": "dsa",
+        "is_registered": false,
+        "last_updated": null,
+        "data": {
+         "username": "",
+         "agent": "",
+         "health": 0,
+         "shield": 0,
+         "ult_points_needed": 0,
+         "ult_points_gained": 0,
+         "weapon": "",
+         "c_util": true,
+         "q_util": true,
+         "e_util": true,
+         "x_util": false,
+         "credits": 0,
+         "has_spike": false,
+          "is_dead": false
+       }
+     },
+     "player_2": {
+        "token": "",
+        "is_registered": false,
+        "last_updated": null,
+        "data": {
+         "username": "",
+         "agent": "",
+         "health": 0,
+         "shield": 0,
+         "ult_points_needed": 0,
+         "ult_points_gained": 0,
+         "weapon": "",
+         "c_util": true,
+         "q_util": true,
+         "e_util": true,
+         "x_util": false,
+         "credits": 0,
+         "has_spike": false,
+          "is_dead": false
+       }
+     },
+     "player_3": {
+        "token": "",
+        "is_registered": false,
+        "last_updated": null,
+        "data": {
+         "username": "",
+         "agent": "",
+         "health": 0,
+         "shield": 0,
+         "ult_points_needed": 0,
+         "ult_points_gained": 0,
+         "weapon": "",
+         "c_util": true,
+         "q_util": true,
+         "e_util": true,
+         "x_util": false,
+         "credits": 0,
+         "has_spike": false,
+          "is_dead": false
+       }
+     },
+     "player_4": {
+        "token": "",
+        "is_registered": false,
+        "last_updated": null,
+        "data": {
+         "username": "",
+         "agent": "",
+         "health": 0,
+         "shield": 0,
+         "ult_points_needed": 0,
+         "ult_points_gained": 0,
+         "weapon": "",
+         "c_util": true,
+         "q_util": true,
+         "e_util": true,
+         "x_util": false,
+         "credits": 0,
+         "has_spike": false,
+          "is_dead": false
+       }
+     },
+     "player_5": {
+        "token": "",
+        "is_registered": false,
+        "last_updated": null,
+        "data": {
+         "username": "",
+         "agent": "",
+         "health": 0,
+         "shield": 0,
+         "ult_points_needed": 0,
+         "ult_points_gained": 0,
+         "weapon": "",
+         "c_util": true,
+         "q_util": true,
+         "e_util": true,
+         "x_util": false,
+         "credits": 0,
+         "has_spike": false,
+          "is_dead": false
+       }
+     },
+     "player_6": {
+        "token": "",
+        "is_registered": false,
+        "last_updated": null,
+        "data": {
+         "username": "",
+         "agent": "",
+         "health": 0,
+         "shield": 0,
+         "ult_points_needed": 0,
+         "ult_points_gained": 0,
+         "weapon": "",
+         "c_util": true,
+         "q_util": true,
+         "e_util": true,
+         "x_util": false,
+         "credits": 0,
+         "has_spike": false,
+          "is_dead": false
+       }
+     },
+     "player_7": {
+        "token": "",
+        "is_registered": false,
+        "last_updated": null,
+        "data": {
+         "username": "",
+         "agent": "",
+         "health": 0,
+         "shield": 0,
+         "ult_points_needed": 0,
+         "ult_points_gained": 0,
+         "weapon": "",
+         "c_util": true,
+         "q_util": true,
+         "e_util": true,
+         "x_util": false,
+         "credits": 0,
+         "has_spike": false,
+          "is_dead": false
+       }
+     },
+     "player_8": {
+        "token": "",
+        "is_registered": false,
+        "last_updated": null,
+        "data": {
+         "username": "",
+         "agent": "",
+         "health": 0,
+         "shield": 0,
+         "ult_points_needed": 0,
+         "ult_points_gained": 0,
+         "weapon": "",
+         "c_util": true,
+         "q_util": true,
+         "e_util": true,
+         "x_util": false,
+         "credits": 0,
+         "has_spike": false,
+          "is_dead": false
+       }
+     },
+     "player_9": {
+        "token": "",
+        "is_registered": false,
+        "last_updated": null,
+        "data": {
+         "username": "",
+         "agent": "",
+         "health": 0,
+         "shield": 0,
+         "ult_points_needed": 0,
+         "ult_points_gained": 0,
+         "weapon": "",
+         "c_util": true,
+         "q_util": true,
+         "e_util": true,
+         "x_util": false,
+         "credits": 0,
+         "has_spike": false,
+          "is_dead": false
+       }
+     }
+}

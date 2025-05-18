@@ -1,0 +1,78 @@
+{
+  "manifest_version": 1,
+  "type": "WebApp",
+  "meta": {
+    "name": "Sample App",
+    "version": "0.1.0",
+    "minimum-overwolf-version": "0.169.0",
+    "author": "Overwolf",
+    "description": "Client for the HelValorant Tournament Overlay system",
+    "dock_button_title": "HelValorant",
+    "icon": "icons/iconMouseOver.png",
+    "icon_gray": "icons/iconMouseNormal.png"
+  },
+  "permissions": [
+    "GameInfo",
+    "GameControl",
+    "Extensions",
+    "Streaming",
+    "Profile",
+    "Clipboard"
+  ],
+  "data": {
+    "start_window": "main",
+    "windows": {
+      "main": {
+        "file": "windows/main.html",
+        "transparent": false,
+        "resizable": true,
+        "size": {
+          "width": 400,
+          "height": 300
+        },
+        "min_size": {
+          "width": 400,
+          "height": 300
+        }
+      },
+      "in_game": {
+        "file": "windows/in_game.html",
+        "transparent": true,
+        "resizable": false,
+        "size": {
+          "width": 280,
+          "height": 90
+        },
+        "min_size": {
+          "width": 280,
+          "height": 90
+        }
+      },
+      "background": {
+        "file": "windows/background.html",
+        "is_background_page": true
+      }
+    },
+    "game_targeting": {
+      "type": "dedicated",
+      "game_ids": [21640]
+    },
+    "game_events": [21640],
+    "launch_events": [
+      {
+        "event": "GameLaunch",
+        "event_data": {
+          "game_ids": [21640]
+        },
+        "start_minimized": true
+      }
+    ],
+    "hotkeys": {
+      "toggle_overlay": {
+        "title": "Toggle Overlay",
+        "action-type": "toggle",
+        "default": "Ctrl+F7"
+      }
+    }
+  }
+} 

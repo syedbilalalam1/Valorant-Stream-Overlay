@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>HelValorant Overlay Client</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f1923;
+      color: #ffffff;
+      margin: 0;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      color: #ff4655;
+      font-size: 22px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #ece8e1;
+    }
+    
+    input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      background-color: #1f2731;
+      border: 1px solid #384451;
+      color: white;
+      border-radius: 3px;
+    }
+    
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ff4655;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    
+    button:hover {
+      background-color: #ff5e6c;
+    }
+    
+    #status {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 3px;
+      background-color: #1f2731;
+      text-align: center;
+    }
+    
+    .connected {
+      color: #5bff3b;
+    }
+    
+    .error {
+      color: #ff4655;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HelValorant Overlay Client</h1>
+    
+    <div class="form-group">
+      <label for="server-url">Tournament Server URL:</label>
+      <input type="text" id="server-url" placeholder="http://example.com:25565">
+    </div>
+    
+    <div class="form-group">
+      <label for="player-token">Your Tournament Token:</label>
+      <input type="text" id="player-token" placeholder="Enter token provided by organizer">
+    </div>
+    
+    <button id="connect-btn">Connect</button>
+    
+    <div id="status">Not connected</div>
+  </div>
+
+  <script src="../js/main.js"></script>
+</body>
+</html> 

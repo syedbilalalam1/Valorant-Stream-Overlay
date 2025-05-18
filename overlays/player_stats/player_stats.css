@@ -1,0 +1,307 @@
+:root{
+    --overlay_black: #181818;
+    --overlay_dark: #23232388;
+    --map_select_light_trans: #43434300;
+    --overlay_green: #71edc0;
+    --overlay_trans_green: #397b63b5;
+    --overlay_red: #eb535d;
+    --overlay_trans_red: #913238ad;
+    --overlay_dark: #101824;
+    --overlay_dark_trans: #10182495;
+}
+/*------ UTILITY CLASSES ------*/
+*{
+    box-sizing: border-box;
+}
+body{
+    padding: 0px;
+    margin: 0;
+    font-family: 'Montserrat';
+    /*background-image: url('https://sm.ign.com/t/ign_br/screenshot/a/a-gameplay/a-gameplay-screenshot-of-from-valorants-closed-beta_z548.1080.jpg');*/
+    background-color: rgba(0,0,0,0);
+    background-size: 100%;
+}
+body::after, body::before{
+    padding: 0px;
+}
+.flex{
+    display: flex;
+    padding: 0;
+}
+.left-team{
+    left: 20px;
+    bottom: 20px;
+}
+.right-team{
+    right: 20px;
+    bottom: 20px;
+}
+.player-list-red-team{
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: 360px;
+    --team-color: var(--overlay_red);
+    --team-color-transparent: var(--overlay_trans_red);
+}
+
+.player-list-green-team{
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    width: 360px;
+    --team-color: var(--overlay_green);
+    --team-color-transparent: var(--overlay_trans_green);
+}
+
+.player-stat-container{
+    position: relative;
+    aspect-ratio: 3/1;
+    height: 100px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+.player-status{
+    width: 100%;
+    flex-grow: 1;
+    background-color: var(--overlay_dark_trans);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+.player-status .player-weapon{
+    max-height: 29px;
+    transform: scaleX(-1);
+    margin-right: auto;
+    margin-left: 10px;
+    max-width: 150px;
+    height: auto;
+}
+.player-status .player-ability{
+    width: 25px;
+    height: auto;
+    filter: opacity(.4);
+}
+.player-status .ability-available{
+    filter: unset;
+}
+.player-status .player-credits{
+    margin-left: auto;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    margin-top: auto;
+    color: #fff;
+    display: flex;
+    gap: 4px;
+    font-weight: 700;
+    align-items: center;
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+}
+.right-team .player-status .player-credits{
+    margin-left: 10px;
+    margin-right: auto;
+    flex-direction: row-reverse;
+    position: absolute;
+    right: unset !important;
+    left: 3px;
+    bottom: 3px;
+}
+.player-status .player-credits img{
+    height: 12px;
+}
+.right-team .player-status .player-weapon{
+    transform: scaleX(1);
+    margin-right: 10px;
+    margin-left: auto;
+}
+.right-team .player-status{
+    flex-direction: row-reverse;
+}
+.right-team .player-status .player-agent{
+    transform: scaleX(-1);
+}
+.player-health{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 8px;
+    background-color: var(--overlay_black);
+}
+.right-team .player-health{
+    justify-content: flex-end;
+}
+.player-health .player-health-bar{  
+    height: 100%;
+    background-color: var(--team-color);
+}
+.player-name{
+    background-color: var(--team-color-transparent);
+    height: 36px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.right-team .player-name{
+    flex-direction: row-reverse;
+}
+.player-name .player-name-container{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    color: #fff;
+    max-width: 30%;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.right-team .player-name-container{
+    text-align: right;
+
+    margin-left: auto;
+    margin-right: 0;
+}
+.player-status{
+    display: flex;
+}
+.player-status img{
+    height: 56px;
+}
+
+.player-name .player-health{
+    font-weight: 800;
+    color: #fff;
+    background-color: none;
+}
+.player-ult-point-container{
+    display: flex;
+    gap: 5px;
+    max-width: 30%;
+    margin-left: auto;
+    margin-right: 0;
+}
+.right-team .player-ult-point-container{
+    margin-left: 0;
+    margin-right: auto;
+}
+.player-ult-point{
+    --side-length: 10px;
+    height: var(--side-length);
+    width: var(--side-length);
+}
+.full-point{
+    color: #fff;
+    filter: invert(1);
+}
+.player-ult-indicator-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    min-width: 30px;
+    width: fit-content;
+    position: relative;
+}
+.player-ult-indicator-container .border{
+    height: 28px;
+}
+.player-ult-indicator-container .ult-icon{
+    position: absolute;
+    height: 26px;
+    width: auto;
+    filter: invert(1);
+}
+.player-name .player-health-count{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 0;
+}
+.right-team .player-health-count{
+    margin-left: 0;
+    margin-right: auto;
+}
+.player-name .player-health-count .player-health-count-number{
+    color: #fff;
+    font-weight: 800;
+}
+.player-shield-count{
+    background-color: var(--overlay_black);
+    color: #fff;
+    font-size: small;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3px;
+    --side-length: 25px;
+    height: var(--side-length);
+    width: var(--side-length);
+    clip-path: polygon(calc(50%) 0px , calc(100%) calc(15%) , calc(100%) calc(65%), calc(50%) calc(100%), 0px calc(65%), 0px calc(15%));
+}
+.player-shield-outline{
+    background-color: var(--team-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --side-length: 29px;
+    height: var(--side-length);
+    width: var(--side-length);
+    clip-path: polygon(calc(50%) 0px , calc(100%) calc(15%) , calc(100%) calc(65%), calc(50%) calc(100%), 0px calc(65%), 0px calc(15%));
+}
+.shield-down{
+    background-color: transparent;
+}
+
+
+.has-spike-indicator{
+    position: absolute;
+    background-color: #fff;
+    height: 30px;
+    width: 30px;
+    border-radius: 40000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: -15px;
+    top: 13px;
+    z-index: 9999;
+    opacity: 0;
+}
+.has-spike{
+    opacity: 1;
+}
+.has-spike-indicator img{
+    height: 55%;
+    filter:invert();
+}
+.right-team .has-spike-indicator{
+    right: -15px;
+    left: unset;
+}
+
+.right-team > .player-dead{
+    -webkit-filter: grayscale();
+    filter: grayscale();
+    -webkit-mask-image: linear-gradient(to left, black 0%, transparent 60%);
+    mask-image: linear-gradient(to left, black 0%, transparent 60%);
+}
+.left-team > .player-dead{
+    -webkit-filter: grayscale();
+    filter: grayscale();
+    -webkit-mask-image: linear-gradient(to right, black, transparent);
+    mask-image: linear-gradient(to right, black, transparent);
+}
+.player-dead > .player-status{
+    background-color: transparent !important;
+}

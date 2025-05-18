@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Overlay Status</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgba(15, 25, 35, 0.7);
+      color: white;
+      margin: 0;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ff4655;
+      overflow: hidden;
+    }
+    
+    .status-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .status-text {
+      font-size: 14px;
+    }
+    
+    .status-connected {
+      color: #5bff3b;
+    }
+    
+    .status-error {
+      color: #ff4655;
+    }
+    
+    .status-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    
+    .indicator-connected {
+      background-color: #5bff3b;
+      box-shadow: 0 0 5px #5bff3b;
+    }
+    
+    .indicator-error {
+      background-color: #ff4655;
+      box-shadow: 0 0 5px #ff4655;
+    }
+    
+    .close-btn {
+      cursor: pointer;
+      padding: 2px 5px;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 3px;
+      font-size: 12px;
+    }
+    
+    .close-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="status-container">
+    <div style="display: flex; align-items: center;">
+      <div id="status-indicator" class="status-indicator"></div>
+      <div id="status-text" class="status-text">Waiting for connection...</div>
+    </div>
+    <div id="close-btn" class="close-btn">Hide</div>
+  </div>
+  
+  <script src="../js/in_game.js"></script>
+</body>
+</html> 
